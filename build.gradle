@@ -1,0 +1,33 @@
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    group = "com.jHolism.jHolism"
+
+    sourceCompatibility = '1.8'
+
+
+    tasks.withType(Javadoc).each {
+        it.classpath = sourceSets.main.compileClasspath
+    }
+
+    ext {
+        libraries = [
+                junit: "org.junit.jupiter:junit-jupiter:5.7.0-M1",
+                mockito: 'org.mockito:mockito-core:3.3.3',
+                flogger: 'com.google.flogger:flogger:0.5.1'
+        ]
+    }
+
+    test {
+        testLogging {
+            showStandardStreams = true
+        }
+    }
+}

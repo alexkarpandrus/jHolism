@@ -1,0 +1,16 @@
+apply plugin: "java-library"
+
+dependencies {
+
+    api libraries.flogger
+
+    testImplementation libraries.junit, libraries.mockito
+
+}
+
+// Silences log statements during tests. This still allows normal failures to be printed.
+test {
+    testLogging {
+        showStandardStreams = false
+    }
+}
