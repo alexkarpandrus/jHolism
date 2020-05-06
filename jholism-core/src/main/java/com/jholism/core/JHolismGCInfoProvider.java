@@ -1,5 +1,6 @@
 package com.jholism.core;
 
+import com.google.common.flogger.FluentLogger;
 import com.jholism.communication.IJHolismCommunicator;
 import com.jholism.communication.messages.GCInfo;
 
@@ -7,6 +8,8 @@ import com.jholism.communication.messages.GCInfo;
  * Thread-safe due to invocation happening from the same executor.
  */
 public class JHolismGCInfoProvider implements IJHolismGCInfoProvider {
+
+    private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
     private final IJHolismCommunicator communicator;
 
@@ -31,6 +34,7 @@ public class JHolismGCInfoProvider implements IJHolismGCInfoProvider {
      */
     private void collectGCStats() {
         final GCInfo gcInfo = getGCInfo();
+        logger.atFinest().log("GC info: %s", gcInfo);
         communicator.sendCommand(currentLeaderId, gcInfo);
     }
 
