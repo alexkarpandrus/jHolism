@@ -1,4 +1,4 @@
-package com.jholism.core.messages;
+package com.jholism.communication.messages;
 
 // TODO
 public class GCStrategy extends AbstractBaseMessage {

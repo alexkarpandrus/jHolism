@@ -1,6 +1,6 @@
 package com.jholism.core;
 
-import com.jholism.core.messages.GCStrategy;
+import com.jholism.communication.messages.GCStrategy;
 
 /**
  * Invoker of GC strategies

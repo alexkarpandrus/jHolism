@@ -1,11 +1,12 @@
 package com.jholism.core;
 
-import com.jholism.core.messages.GCInfo;
-import com.jholism.core.messages.GCStrategy;
-import com.jholism.core.messages.LeaderElected;
+import com.jholism.communication.messages.GCInfo;
+import com.jholism.communication.messages.GCStrategy;
+import com.jholism.communication.messages.LeaderElected;
 
 /**
- * Observes the messages exchanged between nodes. All updates are guaranteed to come from a single thread.
+ * Observes the messages exchanged between nodes.
+ * All updates are guaranteed to come from a single thread, since everything is executed from the single executor.
  */
 public interface INodeMessageObserver {
 

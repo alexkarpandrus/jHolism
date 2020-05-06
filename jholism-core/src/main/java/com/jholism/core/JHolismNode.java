@@ -1,9 +1,9 @@
 package com.jholism.core;
 
 import com.google.common.flogger.FluentLogger;
-import com.jholism.core.messages.GCInfo;
-import com.jholism.core.messages.GCStrategy;
-import com.jholism.core.messages.LeaderElected;
+import com.jholism.communication.messages.GCInfo;
+import com.jholism.communication.messages.GCStrategy;
+import com.jholism.communication.messages.LeaderElected;
 
 import java.util.List;
 
@@ -60,6 +60,5 @@ class JHolismNode implements INodeMessageObserver {
         isLeader = leaderElected.getNodeId() == nodeId;
         gcInfoProvider.onNewLeader(leaderElected.getNodeId());
     }
-
 
 }

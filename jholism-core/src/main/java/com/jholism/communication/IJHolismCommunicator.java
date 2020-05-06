@@ -1,6 +1,6 @@
 package com.jholism.communication;
 
-import com.jholism.core.messages.IJHolismMessage;
+import com.jholism.communication.messages.IJHolismMessage;
 
 /**
  * Communicates with other nodes in the network

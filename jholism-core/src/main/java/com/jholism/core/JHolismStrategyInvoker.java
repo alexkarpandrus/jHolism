@@ -2,7 +2,7 @@ package com.jholism.core;
 
 import com.google.common.flogger.FluentLogger;
 import com.jholism.communication.IJHolismCommunicator;
-import com.jholism.core.messages.GCStrategy;
+import com.jholism.communication.messages.GCStrategy;
 
 public class JHolismStrategyInvoker implements IJHolismStrategyInvoker {
 

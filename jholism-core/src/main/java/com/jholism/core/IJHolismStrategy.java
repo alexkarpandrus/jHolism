@@ -1,7 +1,7 @@
 package com.jholism.core;
 
-import com.jholism.core.messages.GCInfo;
-import com.jholism.core.messages.GCStrategy;
+import com.jholism.communication.messages.GCInfo;
+import com.jholism.communication.messages.GCStrategy;
 
 import java.util.List;
 
