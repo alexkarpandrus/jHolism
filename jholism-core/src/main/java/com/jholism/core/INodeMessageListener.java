@@ -8,7 +8,7 @@ import com.jholism.communication.messages.LeaderElected;
  * Observes the messages exchanged between nodes.
  * All updates are guaranteed to come from a single thread, since everything is executed from the single executor.
  */
-public interface INodeMessageObserver {
+public interface INodeMessageListener {
 
     /**
      * Invoked when new {@link GCInfo} is received

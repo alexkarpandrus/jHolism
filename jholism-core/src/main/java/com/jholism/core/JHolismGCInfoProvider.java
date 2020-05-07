@@ -7,7 +7,7 @@ import com.jholism.communication.messages.GCInfo;
 /**
  * Thread-safe due to invocation happening from the same executor.
  */
-public class JHolismGCInfoProvider implements IJHolismGCInfoProvider {
+class JHolismGCInfoProvider {
 
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
@@ -24,7 +24,6 @@ public class JHolismGCInfoProvider implements IJHolismGCInfoProvider {
 
     }
 
-    @Override
     public void onNewLeader(final int nodeId) {
         this.currentLeaderId = nodeId;
     }

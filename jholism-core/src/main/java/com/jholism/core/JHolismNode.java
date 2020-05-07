@@ -1,29 +1,31 @@
 package com.jholism.core;
 
 import com.google.common.flogger.FluentLogger;
+import com.jholism.communication.IJHolismCommunicator;
 import com.jholism.communication.messages.GCInfo;
 import com.jholism.communication.messages.GCStrategy;
 import com.jholism.communication.messages.LeaderElected;
 
 import java.util.List;
 
-class JHolismNode implements INodeMessageObserver {
+class JHolismNode implements INodeMessageListener {
 
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
-
-    private boolean isLeader = false;
-
     private final int nodeId;
     private final IJHolismStrategy strategy;
-    private final IJHolismStrategyInvoker strategyInvoker;
-    private final IJHolismGCInfoProvider gcInfoProvider;
+    private final JHolismStrategyInvoker strategyInvoker;
+    private final JHolismGCInfoProvider gcInfoProvider;
+    private boolean isLeader = false;
 
-    JHolismNode(final int nodeId, final IJHolismStrategy strategy, final IJHolismStrategyInvoker strategyInvoker,
-                final IJHolismGCInfoProvider gcInfoProvider) {
+    JHolismNode(final int nodeId, final IJHolismStrategy strategy, final JHolismStrategyInvoker strategyInvoker,
+                final JHolismGCInfoProvider gcInfoProvider,
+                final IJHolismCommunicator communicator) {
         this.nodeId = nodeId;
         this.strategy = strategy;
         this.strategyInvoker = strategyInvoker;
         this.gcInfoProvider = gcInfoProvider;
+        // register the node as a lister
+        communicator.registerMessagesListener(this);
     }
 
 
@@ -35,7 +37,7 @@ class JHolismNode implements INodeMessageObserver {
             return;
         }
 
-        final List<GCStrategy> strategies = this.strategy.updateState(gcInfo);
+        final List<GCStrategy> strategies = strategy.updateState(gcInfo);
 
         if (strategies == null || strategies.isEmpty()) {
             logger.atFine().log("No GC strategy will be invoked");
