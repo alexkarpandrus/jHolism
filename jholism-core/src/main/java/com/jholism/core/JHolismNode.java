@@ -18,14 +18,11 @@ class JHolismNode implements INodeMessageListener {
     private boolean isLeader = false;
 
     JHolismNode(final int nodeId, final IJHolismStrategy strategy, final JHolismStrategyInvoker strategyInvoker,
-                final JHolismGCInfoProvider gcInfoProvider,
-                final IJHolismCommunicator communicator) {
+                final JHolismGCInfoProvider gcInfoProvider) {
         this.nodeId = nodeId;
         this.strategy = strategy;
         this.strategyInvoker = strategyInvoker;
         this.gcInfoProvider = gcInfoProvider;
-        // register the node as a lister
-        communicator.registerMessagesListener(this);
     }
 
 
